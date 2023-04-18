@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,9 @@ using UnityEngine;
 
 public class PlanetManager : MonoBehaviour
 {
-    public GameObject planetPrefab;
+    // this is icky, find a nicer way to do it if at all possible
+    public string[] planetNames;
+    public GameObject[] planetPrefabs;
     private Dictionary<string, PlanetAppearanceController> planetControllers = new Dictionary<string, PlanetAppearanceController>();
 
     public void createPlanets(List<string> names) {
@@ -13,11 +16,11 @@ public class PlanetManager : MonoBehaviour
         foreach (string name in names)
         {
             // create a child element of the gameobject the script is attached to and get the needed references
-            GameObject newPlanet = Instantiate(planetPrefab) as GameObject;
+            GameObject newPlanet = Instantiate(planetPrefabs[Array.IndexOf(planetNames, name)]) as GameObject;
             newPlanet.transform.parent = gameObject.transform;
 
             // move the planet to a random point in the orbit around the sun at its set distance
-            float angle = Random.Range(0f,360f) * Mathf.Deg2Rad;
+            float angle = UnityEngine.Random.Range(0f,360f) * Mathf.Deg2Rad;
             newPlanet.transform.position = new Vector3( Mathf.Cos(angle) * i , 0, Mathf.Sin(angle) * i );
             i++;
             
