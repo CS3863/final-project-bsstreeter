@@ -1,3 +1,4 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10911479&assignment_repo_type=AssignmentRepo)
-# Unity-Temp
-Git Repo for Unity project
+# moodetarium
+This project is created for the Coding and the Arts class at The University of Tulsa. Our goal is to create a sense of community among TU students from differing academic backgrounds. We are exploring the unique possibilities that arise when combining creative fields like film and digital art with technical skills such as data manipulation and visualization.
+
+This repository holds an Augmented Reality display that interacts with data collected from the [corresponding website](https://ineffablezoe.wixsite.com/moodetarium/). The project is developed in Unity. 
