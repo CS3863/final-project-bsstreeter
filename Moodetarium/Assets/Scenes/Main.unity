@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19528377, g: 0.097322635, b: 0.1191001, a: 1}
+  m_IndirectSpecularColor: {r: 0.19525018, g: 0.09739173, b: 0.11902071, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -262,8 +262,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08abaefc368b814ab412ff87ac557e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetPrefab: {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b,
-    type: 3}
+  planetNames:
+  - Engineering and Natural Sciences
+  - Arts and Sciences
+  - Law
+  - Business
+  - Health Sciences
+  planetPrefabs:
+  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
+  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
+  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
+  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
+  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
 --- !u!1 &525483892
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,3 +896,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4472650e500c9594daa09c32b9556788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
