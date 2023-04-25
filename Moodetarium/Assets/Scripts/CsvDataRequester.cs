@@ -6,11 +6,19 @@ public class CsvDataRequester : AbstractDataRequester
 {
     private PlanetManager planetManager;
     private List<Dictionary<string, object>> data;
+
     private int i = 0;
+    private Dictionary<string, float> moods;
+    private Dictionary<string, float> submissionCounts;
+
+    private string tempString;
+    private float tempFloat;
 
     private void Awake()
     {
-        data = CSVReader.Read("udata");
+        data = CSVReader.Read("testResponses");
+        moods = new Dictionary<string, float>();
+        submissionCounts = new Dictionary<string, float>();
     }
 
     public override void setPlanetManager()
@@ -26,14 +34,13 @@ public class CsvDataRequester : AbstractDataRequester
         string currCollege = "";
         
         // horribly inefficient way to do this, fix if we have time
-        foreach (KeyValuePair<string, object> item in data)
+        foreach (Dictionary<string, object> row in data)
         {
-            currCollege = System.Convert.ToString(item["college"]);
+            currCollege = System.Convert.ToString(row["college"]);
             if (!colleges.Contains(currCollege)) {
                 colleges.Add(currCollege);
             }
         }
-
         planetManager.createPlanets(colleges);
         yield break;
     }
@@ -46,7 +53,19 @@ public class CsvDataRequester : AbstractDataRequester
 
     protected override IEnumerator GetSubmissionCounts()
     {
-        /* TODO: implement */
+        tempString = System.Convert.ToString(data[i]["college"]);
+
+        if (submissionCounts.ContainsKey(tempString)) {
+            // increment the count for this college by one
+            tempFloat = submissionCounts[tempString] + 1;
+            submissionCounts[tempString] = tempFloat;
+        } else {
+            submissionCounts.Add(tempString, 1);
+        }
+
+        i++;
+        
+        planetManager.setPlanetSizes(submissionCounts);
         yield break;
     }
 }
