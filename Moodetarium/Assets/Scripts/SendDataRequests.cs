@@ -13,10 +13,15 @@ public class SendDataRequests : MonoBehaviour
 
     void Awake()
     {
-        planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
         StartCoroutine(GetAvailableColleges());
+        setPlanetManager();
         // this is moved here instead of awake to make sure planets are created before things are done to them
         InvokeRepeating("getData", 1.0f, 5.0f);
+    }
+
+    void setPlanetManager()
+    {
+        planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
     }
 
     IEnumerator GetAvailableColleges()
