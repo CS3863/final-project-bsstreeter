@@ -7,8 +7,7 @@ public class CsvDataRequester : AbstractDataRequester
     private PlanetManager planetManager;
     private List<Dictionary<string, object>> data;
 
-    private int moodIndex = 0;
-    private int submissionCountIndex = 0;
+    private int index = 0;
 
     private Dictionary<string, float> moods;
     // store the total mood so we can just divide by the count on the next one
@@ -57,7 +56,7 @@ public class CsvDataRequester : AbstractDataRequester
 
     protected override IEnumerator GetSubmissionCounts()
     {
-        tempString = System.Convert.ToString(data[submissionCountIndex]["college"]);
+        tempString = System.Convert.ToString(data[index]["college"]);
 
         if (submissionCounts.ContainsKey(tempString)) {
             // increment the count for this college by one
@@ -66,9 +65,6 @@ public class CsvDataRequester : AbstractDataRequester
         } else {
             submissionCounts.Add(tempString, 1);
         }
-
-        submissionCountIndex++;
-
         planetManager.setPlanetSizes(submissionCounts);
         yield break;
     }
@@ -78,8 +74,8 @@ public class CsvDataRequester : AbstractDataRequester
         // wait for the counts to happen so we can get a correct average
         yield return StartCoroutine(GetSubmissionCounts());
 
-        tempString = System.Convert.ToString(data[moodIndex]["college"]);
-        tempFloat = System.Convert.ToSingle(data[moodIndex]["mood"]);
+        tempString = System.Convert.ToString(data[index]["college"]);
+        tempFloat = System.Convert.ToSingle(data[index]["mood"]);
 
         
         if (cumulativeMoods.ContainsKey(tempString)) {
@@ -90,7 +86,7 @@ public class CsvDataRequester : AbstractDataRequester
             moods.Add(tempString, tempFloat);
         }
 
-        moodIndex++;
+        index++;
         
         planetManager.setPlanetColors(moods);
         yield break;
