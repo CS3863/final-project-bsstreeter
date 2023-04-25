@@ -15,6 +15,8 @@ public class SendDataRequests : MonoBehaviour
     {
         planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
         StartCoroutine(GetAvailableColleges());
+        // this is moved here instead of awake to make sure planets are created before things are done to them
+        InvokeRepeating("getData", 1.0f, 5.0f);
     }
 
     IEnumerator GetAvailableColleges()
@@ -31,9 +33,6 @@ public class SendDataRequests : MonoBehaviour
             colleges =   new List<string>(DataHandler.parseResponse(dataReq.downloadHandler.text).Keys);
             planetManager.createPlanets(colleges);
         }
-
-        // this is moved here instead of awake to make sure planets are created before things are done to them
-        InvokeRepeating("getData", 0, 30.0f);
     }
 
     void getData() 
