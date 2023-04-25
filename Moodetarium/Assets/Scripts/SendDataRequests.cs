@@ -7,19 +7,19 @@ using TMPro;
 public class SendDataRequests : MonoBehaviour
 {
     // private PlanetManager planetManager;
-    WebDataRequester webRequester;
+    AbstractDataRequester requester;
 
     void Awake()
     {
-        webRequester = GetComponent<WebDataRequester>();
-        webRequester.setPlanetManager(); 
-        StartCoroutine(webRequester.GetAvailableColleges());
+        requester = GetComponent<AbstractDataRequester>();
+        requester.setPlanetManager(); 
+        StartCoroutine(requester.GetAvailableColleges());
         // this is moved here instead of awake to make sure planets are created before things are done to them
         InvokeRepeating("callGetData", 1.0f, 5.0f);
     }
 
     public void callGetData() {
-        webRequester.getData();
+        requester.getData();
     }
 
     /*void setPlanetManager()
