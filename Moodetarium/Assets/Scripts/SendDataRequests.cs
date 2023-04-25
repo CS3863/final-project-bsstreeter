@@ -6,15 +6,25 @@ using TMPro;
 
 public class SendDataRequests : MonoBehaviour
 {
-    private PlanetManager planetManager;
-    private Dictionary<string, float> moodDict;
-    private Dictionary<string, float> countDict;  
-    private List<string> colleges;  
+    // private PlanetManager planetManager;
+    AbstractDataRequester requester;
 
     void Awake()
     {
+        requester = GetComponent<AbstractDataRequester>();
+        requester.setPlanetManager(); 
+        StartCoroutine(requester.GetAvailableColleges());
+        // this is moved here instead of awake to make sure planets are created before things are done to them
+        InvokeRepeating("callGetData", 1.0f, 5.0f);
+    }
+
+    public void callGetData() {
+        requester.getData();
+    }
+
+    /*void setPlanetManager()
+    {
         planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
-        StartCoroutine(GetAvailableColleges());
     }
 
     IEnumerator GetAvailableColleges()
@@ -31,9 +41,6 @@ public class SendDataRequests : MonoBehaviour
             colleges =   new List<string>(DataHandler.parseResponse(dataReq.downloadHandler.text).Keys);
             planetManager.createPlanets(colleges);
         }
-
-        // this is moved here instead of awake to make sure planets are created before things are done to them
-        InvokeRepeating("getData", 0, 30.0f);
     }
 
     void getData() 
@@ -71,5 +78,5 @@ public class SendDataRequests : MonoBehaviour
             countDict =  DataHandler.parseResponse(dataReq.downloadHandler.text);
             planetManager.setPlanetSizes(countDict);
         }
-    }
+    }*/
 }
