@@ -7,8 +7,12 @@ public class CsvDataRequester : AbstractDataRequester
     private PlanetManager planetManager;
     private List<Dictionary<string, object>> data;
 
-    private int i = 0;
+    private int moodIndex = 0;
+    private int submissionCountIndex = 0;
+
     private Dictionary<string, float> moods;
+    // store the total mood so we can just divide by the count on the next one
+    private Dictionary<string, float> cumulativeMoods;
     private Dictionary<string, float> submissionCounts;
 
     private string tempString;
@@ -18,6 +22,7 @@ public class CsvDataRequester : AbstractDataRequester
     {
         data = CSVReader.Read("testResponses");
         moods = new Dictionary<string, float>();
+        cumulativeMoods = new Dictionary<string, float>();
         submissionCounts = new Dictionary<string, float>();
     }
 
@@ -45,15 +50,14 @@ public class CsvDataRequester : AbstractDataRequester
         yield break;
     }
 
-    protected override IEnumerator GetAverageMoods()
-    {
-        /* TODO: implement */
-        yield break;
+    public override void getData() {
+        Debug.Log("retrieving data");
+        StartCoroutine(GetAverageMoods());
     }
 
     protected override IEnumerator GetSubmissionCounts()
     {
-        tempString = System.Convert.ToString(data[i]["college"]);
+        tempString = System.Convert.ToString(data[submissionCountIndex]["college"]);
 
         if (submissionCounts.ContainsKey(tempString)) {
             // increment the count for this college by one
@@ -63,9 +67,32 @@ public class CsvDataRequester : AbstractDataRequester
             submissionCounts.Add(tempString, 1);
         }
 
-        i++;
-        
+        submissionCountIndex++;
+
         planetManager.setPlanetSizes(submissionCounts);
         yield break;
     }
+
+    protected override IEnumerator GetAverageMoods()
+    {
+        // wait for the counts to happen so we can get a correct average
+        yield return StartCoroutine(GetSubmissionCounts());
+
+        tempString = System.Convert.ToString(data[moodIndex]["college"]);
+        tempFloat = System.Convert.ToSingle(data[moodIndex]["mood"]);
+
+        
+        if (cumulativeMoods.ContainsKey(tempString)) {
+            cumulativeMoods[tempString] += tempFloat;
+            moods[tempString] = cumulativeMoods[tempString] / submissionCounts[tempString];
+        } else {
+            cumulativeMoods.Add(tempString, tempFloat);
+            moods.Add(tempString, tempFloat);
+        }
+
+        moodIndex++;
+        
+        planetManager.setPlanetColors(moods);
+        yield break;
+    }   
 }
