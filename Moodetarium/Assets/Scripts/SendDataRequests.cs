@@ -12,7 +12,11 @@ public class SendDataRequests : MonoBehaviour
     void Awake()
     {
         requester = GetComponent<AbstractDataRequester>();
-        requester.setPlanetManager(); 
+        requester.setPlanetManager();
+    }
+
+    private void Start()
+    {
         StartCoroutine(requester.GetAvailableColleges());
         // this is moved here instead of awake to make sure planets are created before things are done to them
         InvokeRepeating("callGetData", 1.0f, 5.0f);
