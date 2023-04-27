@@ -289,7 +289,6 @@ GameObject:
   - component: {fileID: 525483899}
   - component: {fileID: 525483897}
   - component: {fileID: 525483898}
-  - component: {fileID: 525483900}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -355,14 +354,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525483892}
-  m_LocalRotation: {x: 0.16030473, y: -0.0069059115, z: 0.012729009, w: 0.98696136}
-  m_LocalPosition: {x: 5.73, y: 1.57, z: -1.48}
+  m_LocalRotation: {x: 0.19996412, y: -0.3736123, z: 0.08282785, w: 0.90198}
+  m_LocalPosition: {x: 7, y: 5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 18.458, y: -0.577, z: 1.384}
+  m_LocalEulerAnglesHint: {x: 25, y: -45, z: 0}
 --- !u!114 &525483896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +381,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525483892}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f9cdeabe95970b4d996d5e4f2d15f9f, type: 3}
   m_Name: 
@@ -496,19 +495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafe79c4def12834c9426ad74c2bafb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &525483900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525483892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab62c3db53582941a1e6f4818bb54e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rocket: {fileID: 2111213489}
+  timeConversionFactor: 10000
+  maxTimeBetweenChanges: 30
+  minTimeBetweenChanges: 1
 --- !u!1 &567951459
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4472650e500c9594daa09c32b9556788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
 --- !u!1 &2111213489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ca3a175d16882a42aa13849cfedc527,
@@ -942,8 +932,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocket: {fileID: 0}
-  speed: 4.25
-  tSpeed: 65
+  speed: 5
+  tSpeed: 75
 --- !u!143 &2111213494
 CharacterController:
   m_ObjectHideFlags: 0
@@ -961,7 +951,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0.045}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2133376067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -997,12 +987,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7ca3a175d16882a42aa13849cfedc527,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ca3a175d16882a42aa13849cfedc527,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ca3a175d16882a42aa13849cfedc527,
         type: 3}
