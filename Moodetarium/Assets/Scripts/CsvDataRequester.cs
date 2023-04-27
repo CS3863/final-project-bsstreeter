@@ -18,7 +18,9 @@ public class CsvDataRequester : AbstractDataRequester
     private string tempString;
     private float tempFloat;
 
-    private float timeConversionFactor = 100000.0f;
+    public float timeConversionFactor = 100000.0f;
+    public float maxTimeBetweenChanges = 30.0f;
+    public float minTimeBetweenChanges = 1.0f;
 
     private void Awake()
     {
@@ -57,9 +59,9 @@ public class CsvDataRequester : AbstractDataRequester
     }
 
     private IEnumerator getData() {
-        while (index < data.Count)
+        while (index < data.Count - 1)
         {
-            Debug.Log("retrieving data");
+            Debug.Log("retrieving data row " + index);
             // get average moods, it calls getsubmissioncounts on its own
             StartCoroutine(GetAverageMoods());
             // yield the amount of time between the current point and the next point
@@ -67,6 +69,9 @@ public class CsvDataRequester : AbstractDataRequester
             // move to next row
             index++;
         }
+        Debug.Log("retrieving data row " + index);
+        // get average moods, it calls getsubmissioncounts on its own
+        StartCoroutine(GetAverageMoods());
     }
 
     protected override IEnumerator GetSubmissionCounts()
@@ -105,19 +110,24 @@ public class CsvDataRequester : AbstractDataRequester
         yield break;
     }
 
-    /*
-    * Determine the number of seconds to wait until the next  
-    */
     private float timeToNextRow() {
+        // read the datetimes
         tempString = System.Convert.ToString(data[index]["time"]);
         DateTime currDateTime = DateTime.ParseExact(tempString, "yyyy-MM-dTHH:mm:ssZ",
                                        System.Globalization.CultureInfo.InvariantCulture);
         tempString = System.Convert.ToString(data[index + 1]["time"]);
         DateTime nextDateTime = DateTime.ParseExact(tempString, "yyyy-MM-dTHH:mm:ssZ",
                                        System.Globalization.CultureInfo.InvariantCulture);
+        // find elapsed time
         TimeSpan elapsed = nextDateTime - currDateTime;
-        Debug.Log("curr: " + currDateTime + ", next: " + nextDateTime + " elapsed: " + elapsed.TotalSeconds);
-        Debug.Log("waiting:  " + (float)(elapsed.TotalSeconds / timeConversionFactor));
-        return (float)(elapsed.TotalSeconds / timeConversionFactor);
+        // convert to a scaled down wait time 
+        float waitTime = (float)(elapsed.TotalSeconds / timeConversionFactor);
+        // make sure the wait time isn't zero
+        waitTime = Math.Max(minTimeBetweenChanges, waitTime);
+        // make sure the wait time isn't too long
+        waitTime = Math.Min(maxTimeBetweenChanges, waitTime);
+
+        Debug.Log("waiting " + waitTime + " seconds");
+        return waitTime;
     }
 }
