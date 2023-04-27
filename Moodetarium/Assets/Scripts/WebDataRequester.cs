@@ -12,6 +12,16 @@ public class WebDataRequester : AbstractDataRequester
         planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
     }
 
+    public override void getData() {
+        InvokeRepeating("getDataRepeatedly", 0.0f, 5.0f);
+    }
+
+    private void getDataRepeatedly() {
+        Debug.Log("retrieving data");
+        StartCoroutine(GetAverageMoods());
+        StartCoroutine(GetSubmissionCounts());
+    }
+
     public override IEnumerator GetAvailableColleges()
     {
         Debug.Log("Getting available colleges");

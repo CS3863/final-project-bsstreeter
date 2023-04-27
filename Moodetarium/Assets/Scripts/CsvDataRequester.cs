@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class CsvDataRequester : AbstractDataRequester
 
     private string tempString;
     private float tempFloat;
+
+    private float timeConversionFactor = 100000.0f;
 
     private void Awake()
     {
@@ -50,8 +53,20 @@ public class CsvDataRequester : AbstractDataRequester
     }
 
     public override void getData() {
-        Debug.Log("retrieving data");
-        StartCoroutine(GetAverageMoods());
+        StartCoroutine(readDataByTime());
+    }
+
+    private IEnumerator readDataByTime() {
+        while (index < data.Count)
+        {
+            Debug.Log("retrieving data");
+            // get average moods, it calls getsubmissioncounts on its own
+            StartCoroutine(GetAverageMoods());
+            // yield the amount of time between the current point and the next point
+            yield return new WaitForSeconds(timeToNextRow());
+            // move to next row
+            index++;
+        }
     }
 
     protected override IEnumerator GetSubmissionCounts()
@@ -85,10 +100,24 @@ public class CsvDataRequester : AbstractDataRequester
             cumulativeMoods.Add(tempString, tempFloat);
             moods.Add(tempString, tempFloat);
         }
-
-        index++;
         
         planetManager.setPlanetColors(moods);
         yield break;
-    }   
+    }
+
+    /*
+    * Determine the number of seconds to wait until the next  
+    */
+    private float timeToNextRow() {
+        tempString = System.Convert.ToString(data[index]["time"]);
+        DateTime currDateTime = DateTime.ParseExact(tempString, "yyyy-MM-dTHH:mm:ssZ",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+        tempString = System.Convert.ToString(data[index + 1]["time"]);
+        DateTime nextDateTime = DateTime.ParseExact(tempString, "yyyy-MM-dTHH:mm:ssZ",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+        TimeSpan elapsed = nextDateTime - currDateTime;
+        Debug.Log("curr: " + currDateTime + ", next: " + nextDateTime + " elapsed: " + elapsed.TotalSeconds);
+        Debug.Log("waiting:  " + (float)(elapsed.TotalSeconds / timeConversionFactor));
+        return (float)(elapsed.TotalSeconds / timeConversionFactor);
+    }
 }
