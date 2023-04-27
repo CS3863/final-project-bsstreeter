@@ -19,6 +19,6 @@ public class SendDataRequests : MonoBehaviour
     {
         StartCoroutine(requester.GetAvailableColleges());
         // getData is here instead of awake to make sure planets are created before things are done to them
-        requester.getData();
+        requester.startGettingData();
     }
 }

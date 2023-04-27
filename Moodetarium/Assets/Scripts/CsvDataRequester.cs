@@ -52,11 +52,11 @@ public class CsvDataRequester : AbstractDataRequester
         yield break;
     }
 
-    public override void getData() {
-        StartCoroutine(readDataByTime());
+    public override void startGettingData() {
+        StartCoroutine(getData());
     }
 
-    private IEnumerator readDataByTime() {
+    private IEnumerator getData() {
         while (index < data.Count)
         {
             Debug.Log("retrieving data");

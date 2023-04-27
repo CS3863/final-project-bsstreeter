@@ -6,7 +6,7 @@ public abstract class AbstractDataRequester : MonoBehaviour
 {
     public abstract void setPlanetManager();
 
-    public abstract void getData();
+    public abstract void startGettingData();
 
     protected abstract IEnumerator GetAverageMoods();
 
