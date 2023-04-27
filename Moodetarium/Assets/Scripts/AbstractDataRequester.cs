@@ -6,12 +6,7 @@ public abstract class AbstractDataRequester : MonoBehaviour
 {
     public abstract void setPlanetManager();
 
-    public void getData()
-    {
-        Debug.Log("retrieving data");
-        StartCoroutine(GetAverageMoods());
-        StartCoroutine(GetSubmissionCounts());
-    }
+    public abstract void startGettingData();
 
     protected abstract IEnumerator GetAverageMoods();
 
