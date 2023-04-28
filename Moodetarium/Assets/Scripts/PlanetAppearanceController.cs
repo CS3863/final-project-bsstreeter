@@ -12,7 +12,7 @@ public class PlanetAppearanceController : MonoBehaviour
     }
 
     public void setColor(Color color) {
-       planetRenderer.material.SetColor("_Color", color);
+       planetRenderer.material.SetColor("_BaseColor", color);
     }
 
     public void setSize(float scaleValue) {
