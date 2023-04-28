@@ -6,12 +6,13 @@ using UnityEngine.Scripting.APIUpdating;
 public class rocketController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public CharacterController rocket;
+    // public CharacterController rocket;
     public float speed = 5.0f;
     public float tSpeed = 25.0f;
+    
     void Start()
     {
-        rocket = GetComponent<CharacterController>();
+        // rocket = GetComponent<CharacterController>();
     }
 
     
