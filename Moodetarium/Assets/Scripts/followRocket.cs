@@ -5,18 +5,19 @@ using UnityEngine;
 public class followRocket : MonoBehaviour
 {
     public GameObject rocket;
+    private Vector3 offset;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // get the offset of the camera at the start so that it isn't hardcoded
+        offset = transform.position - rocket.transform.position;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = rocket.transform.position + new Vector3(0, 4, -4);
-       // Vector3 rPos = transform.position + transform.forward + 
+        transform.position = rocket.transform.position + offset; 
     }
 }
