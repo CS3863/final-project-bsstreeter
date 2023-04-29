@@ -7,9 +7,13 @@ public class WebDataRequester : AbstractDataRequester
 {
     private PlanetManager planetManager;
 
+    void Awake() {
+        setPlanetManager();
+    }
+
     public override void setPlanetManager()
     {
-        planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
+        planetManager = GetComponent<PlanetManager>();
     }
 
     public override void startGettingData() {
@@ -33,7 +37,7 @@ public class WebDataRequester : AbstractDataRequester
         }
         else
         {
-            List<string>  colleges = new List<string>(DataHandler.parseResponse(dataReq.downloadHandler.text).Keys);
+            List<string> colleges = new List<string>(DataHandler.parseResponse(dataReq.downloadHandler.text).Keys);
             planetManager.createPlanets(colleges);
         }
     }

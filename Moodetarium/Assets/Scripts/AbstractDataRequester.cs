@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class AbstractDataRequester : MonoBehaviour
 {
+    protected virtual void Start() {
+        StartCoroutine(GetAvailableColleges());
+        startGettingData();
+    }
+
     public abstract void setPlanetManager();
 
     public abstract void startGettingData();

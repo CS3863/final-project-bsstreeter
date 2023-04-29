@@ -28,11 +28,12 @@ public class CsvDataRequester : AbstractDataRequester
         moods = new Dictionary<string, float>();
         cumulativeMoods = new Dictionary<string, float>();
         submissionCounts = new Dictionary<string, float>();
+        setPlanetManager();
     }
 
     public override void setPlanetManager()
     {
-        planetManager = GameObject.Find("Planets").GetComponent<PlanetManager>();
+        planetManager = GetComponent<PlanetManager>();
     }
 
     public override IEnumerator GetAvailableColleges()

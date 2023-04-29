@@ -248,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424532646}
   - component: {fileID: 424532647}
+  - component: {fileID: 424532648}
   m_Layer: 0
   m_Name: Planets
   m_TagString: Untagged
@@ -295,6 +296,21 @@ MonoBehaviour:
   - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
   - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
   - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
+--- !u!114 &424532648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424532645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafe79c4def12834c9426ad74c2bafb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeConversionFactor: 100000
+  maxTimeBetweenChanges: 30
+  minTimeBetweenChanges: 1
 --- !u!1 &525483892
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,8 +323,6 @@ GameObject:
   - component: {fileID: 525483894}
   - component: {fileID: 525483900}
   - component: {fileID: 525483893}
-  - component: {fileID: 525483896}
-  - component: {fileID: 525483899}
   - component: {fileID: 525483898}
   - component: {fileID: 525483901}
   m_Layer: 0
@@ -384,18 +398,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!114 &525483896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525483892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb42c609bcc1043489a135ed7bcc4ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &525483898
 AudioSource:
   m_ObjectHideFlags: 0
@@ -492,21 +494,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &525483899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525483892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafe79c4def12834c9426ad74c2bafb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeConversionFactor: 100000
-  maxTimeBetweenChanges: 20
-  minTimeBetweenChanges: 1
 --- !u!114 &525483900
 MonoBehaviour:
   m_ObjectHideFlags: 0
