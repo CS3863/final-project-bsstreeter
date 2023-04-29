@@ -37,7 +37,7 @@ public class WebDataRequester : AbstractDataRequester
         }
         else
         {
-            List<string> colleges = new List<string>(DataHandler.parseResponse(dataReq.downloadHandler.text).Keys);
+            List<string> colleges = new List<string>(WixJSONReader.parseResponse(dataReq.downloadHandler.text).Keys);
             planetManager.createPlanets(colleges);
         }
     }
@@ -52,7 +52,7 @@ public class WebDataRequester : AbstractDataRequester
         }
         else
         {
-            Dictionary<string, float> moodDict = DataHandler.parseResponse(dataReq.downloadHandler.text);
+            Dictionary<string, float> moodDict = WixJSONReader.parseResponse(dataReq.downloadHandler.text);
             planetManager.setPlanetColors(moodDict);
         }
     }
@@ -67,7 +67,7 @@ public class WebDataRequester : AbstractDataRequester
         }
         else
         {
-            Dictionary<string, float> countDict = DataHandler.parseResponse(dataReq.downloadHandler.text);
+            Dictionary<string, float> countDict = WixJSONReader.parseResponse(dataReq.downloadHandler.text);
             planetManager.setPlanetSizes(countDict);
         }
     }
