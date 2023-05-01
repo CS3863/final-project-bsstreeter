@@ -22,6 +22,8 @@ public class CsvDataRequester : AbstractDataRequester
     public float maxTimeBetweenChanges = 30.0f;
     public float minTimeBetweenChanges = 1.0f;
 
+    public CreditsController credit;
+
     private void Awake()
     {
         data = CSVReader.Read("testResponses");
@@ -73,6 +75,7 @@ public class CsvDataRequester : AbstractDataRequester
         Debug.Log("retrieving data row " + index);
         // get average moods, it calls getsubmissioncounts on its own
         StartCoroutine(GetAverageMoods());
+        FinishedCollectingData();
     }
 
     protected override IEnumerator GetSubmissionCounts()
@@ -130,5 +133,10 @@ public class CsvDataRequester : AbstractDataRequester
 
         Debug.Log("waiting " + waitTime + " seconds");
         return waitTime;
+    }
+
+    public override void FinishedCollectingData()
+    {
+        credit.startCredits();
     }
 }

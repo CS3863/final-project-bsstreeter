@@ -18,4 +18,6 @@ public abstract class AbstractDataRequester : MonoBehaviour
     protected abstract IEnumerator GetSubmissionCounts();
 
     public abstract IEnumerator GetAvailableColleges();
+
+    public virtual void FinishedCollectingData() {}
 }
