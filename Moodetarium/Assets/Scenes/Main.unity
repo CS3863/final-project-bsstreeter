@@ -374,9 +374,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafe79c4def12834c9426ad74c2bafb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeConversionFactor: 100000
+  timeConversionFactor: 50000
   maxTimeBetweenChanges: 30
-  minTimeBetweenChanges: 5
+  minTimeBetweenChanges: 2
   credit: {fileID: 252864334}
 --- !u!1 &525483892
 GameObject:

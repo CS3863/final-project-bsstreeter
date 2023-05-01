@@ -7,7 +7,7 @@ public class PlanetAppearanceController : MonoBehaviour
     private Renderer planetRenderer;
     private float originalScale = 2.0f;
 
-    private float changeSpeed = 1.0f;
+    private float changeSpeed = 1.5f;
 
     void Start() {
         planetRenderer = GetComponent<Renderer>();
@@ -28,10 +28,25 @@ public class PlanetAppearanceController : MonoBehaviour
             planetRenderer.material.SetColor("_BaseColor", Color.Lerp(startColor, endColor, tick) );
             yield return null;
         }
+        yield break;
     }
 
     public void setSize(float scaleValue) {
         scaleValue = originalScale * scaleValue;
-        gameObject.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
-    }   
+        // gameObject.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
+        StartCoroutine(changeSizeGradual(new Vector3(scaleValue, scaleValue, scaleValue)));
+    }
+
+    private IEnumerator changeSizeGradual(Vector3 endScale)
+    {
+        Vector3 startScale = gameObject.transform.localScale;
+        float tick = 0f;
+        while (gameObject.transform.localScale != endScale)
+        {
+            tick += Time.deltaTime * changeSpeed;
+            gameObject.transform.localScale = Vector3.Lerp(startScale, endScale, tick);
+            yield return null;
+        }
+        yield break;
+    }  
 }
