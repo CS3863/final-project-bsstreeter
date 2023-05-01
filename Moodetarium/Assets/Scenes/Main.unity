@@ -376,7 +376,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeConversionFactor: 100000
   maxTimeBetweenChanges: 30
-  minTimeBetweenChanges: 1
+  minTimeBetweenChanges: 5
+  credit: {fileID: 252864334}
 --- !u!1 &525483892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,7 +1230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1984773490
 RectTransform:
   m_ObjectHideFlags: 0
