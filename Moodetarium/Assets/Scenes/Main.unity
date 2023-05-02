@@ -457,14 +457,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525483892}
-  m_LocalRotation: {x: 0.13052614, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0.09300001, z: -5.112}
+  m_LocalRotation: {x: 0.0509246, y: -0, z: -0, w: 0.9987026}
+  m_LocalPosition: {x: 0, y: 0.10001, z: -5.213}
   m_LocalScale: {x: 0.05, y: 0.050000004, z: 0.050000004}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.838, y: 0, z: 0}
 --- !u!82 &525483898
 AudioSource:
   m_ObjectHideFlags: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocket: {fileID: 2111213489}
   camRotationSpeed: 5
-  cameraLookAbove: 0.05
+  cameraLookAbove: 0.06
 --- !u!114 &525483901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1304,13 +1304,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111213489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 471ec8972609cbe4281866b1d6756e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
   tSpeed: 75
+--- !u!114 &2111213491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111213489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9cdeabe95970b4d996d5e4f2d15f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 5
 --- !u!1001 &2133376067
 PrefabInstance:
   m_ObjectHideFlags: 0
