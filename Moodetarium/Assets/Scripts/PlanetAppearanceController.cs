@@ -13,6 +13,14 @@ public class PlanetAppearanceController : MonoBehaviour
         planetRenderer = GetComponent<Renderer>();
     }
 
+    public GameObject getThisObject() {
+        return gameObject;
+    }
+
+    public bool isVisible() {
+        return transform.localScale.x > 0;
+    }
+
     public void setColor(Color color) {
     //    planetRenderer.material.SetColor("_BaseColor", color);
         StartCoroutine(changeColorGradual(color));

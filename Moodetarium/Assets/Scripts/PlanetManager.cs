@@ -10,6 +10,10 @@ public class PlanetManager : MonoBehaviour
     public string[] planetNames;
     public GameObject[] planetPrefabs;
     private Dictionary<string, PlanetAppearanceController> planetControllers = new Dictionary<string, PlanetAppearanceController>();
+    
+    public RocketAIController rocketController;
+
+    private int changeCount = 0;
 
     public void createPlanets(List<string> names) {
         float i = 4.0f;
@@ -29,9 +33,24 @@ public class PlanetManager : MonoBehaviour
             planetControllers.Add(name, newObjController);
         }
         Debug.Log("Created planets: " + string.Join(",", names));
+        rocketController.setTarget(chooseRandomVisiblePlanet());
+    }
+
+    public GameObject chooseRandomVisiblePlanet() {
+        List<PlanetAppearanceController> candidates = new List<PlanetAppearanceController>();
+        foreach (PlanetAppearanceController controller in planetControllers.Values)
+        {
+            if (controller.isVisible()) candidates.Add(controller);
+        }
+        int index = UnityEngine.Random.Range(0, candidates.Count);
+        return candidates[index].getThisObject();
     }
 
     public void setPlanetColors(Dictionary<string, float> moods) {
+        if (++changeCount == 3) {
+            changeCount = 0;
+            rocketController.setTarget(chooseRandomVisiblePlanet());
+        }
         foreach (KeyValuePair<string, PlanetAppearanceController> kvp in planetControllers)
         {
             // try catch handles if a key wasn't provided for one of the planets

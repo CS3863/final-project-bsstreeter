@@ -27,12 +27,10 @@ public class RocketAIController : MonoBehaviour
             nav.SetDestination(followTarget.transform.position);
             Debug.Log("remaining distance: " + nav.remainingDistance);
             // stop following if rocket is close to planet
-            if (nav.remainingDistance <= 1.0f) {
+            if (nav.remainingDistance <= 2.0f) {
                 // stop following
                 orbitTarget = followTarget;
                 followTarget = null;
-                // set orbit distance to our current distance remaining
-                // orbitDistance = nav.remainingDistance;
                 // disable nav so that we can orbit
                 nav.enabled = false;
             }
