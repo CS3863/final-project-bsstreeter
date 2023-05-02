@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour
 {
-    public GameObject target;
+    private GameObject target;
     public float degreesPerSecond = 5;
 
     void Start() {
-        if (target == null) target = GameObject.Find("Sun");
+        target = GameObject.Find("Sun");
     }
     
     void Update()
