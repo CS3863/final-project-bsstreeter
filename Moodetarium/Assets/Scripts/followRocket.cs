@@ -14,7 +14,7 @@ public class followRocket : MonoBehaviour
     {
         posOffset = transform.position - rocket.transform.position;
         lookOffset = new Vector3(0, cameraLookAbove, 0);
-        transform.position = rocket.transform.position + (transform.forward * posOffset.z) + (rocket.transform.up * posOffset.y);
+        transform.position = rocket.transform.position + (transform.forward * posOffset.y) + (rocket.transform.up * posOffset.y);
         transform.LookAt(rocket.transform.position + lookOffset);
     }
 
