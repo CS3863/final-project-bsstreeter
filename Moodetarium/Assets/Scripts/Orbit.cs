@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour
 {
-    private GameObject sun;
+    public GameObject target;
     public float degreesPerSecond = 5;
 
     void Start() {
-        sun = GameObject.Find("Sun");
+        if (target == null) target = GameObject.Find("Sun");
     }
     
     void Update()
     {
-        transform.RotateAround(sun.transform.position, Vector3.up, degreesPerSecond * Time.deltaTime);
+        transform.RotateAround(target.transform.position, Vector3.up, degreesPerSecond * Time.deltaTime);
     }
 }
