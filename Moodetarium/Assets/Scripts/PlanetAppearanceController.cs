@@ -31,6 +31,11 @@ public class PlanetAppearanceController : MonoBehaviour
         yield break;
     }
 
+    public float getScale()
+    {
+        return transform.localScale.x;
+    }
+
     public void setSize(float scaleValue) {
         scaleValue = originalScale * scaleValue;
         // gameObject.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
@@ -49,4 +54,9 @@ public class PlanetAppearanceController : MonoBehaviour
         }
         yield break;
     }  
+
+    public GameObject getObject()
+    {
+        return gameObject;
+    }
 }

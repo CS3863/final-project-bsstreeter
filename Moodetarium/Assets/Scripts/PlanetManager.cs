@@ -11,6 +11,8 @@ public class PlanetManager : MonoBehaviour
     public GameObject[] planetPrefabs;
     private Dictionary<string, PlanetAppearanceController> planetControllers = new Dictionary<string, PlanetAppearanceController>();
 
+    public CameraController camController;
+
     public void createPlanets(List<string> names) {
         float i = 3.0f;
         foreach (string name in names)
@@ -52,9 +54,16 @@ public class PlanetManager : MonoBehaviour
         {
             // try catch handles if a key wasn't provided for one of the planets
             try {
+                float prevScale = kvp.Value.getScale();
                 // normalize the scale
                 float scaleValue = counts[kvp.Key] / totalSubmissions;
                 kvp.Value.setSize(scaleValue);
+
+                if (prevScale == 0 && scaleValue > 0)
+                {
+                    GameObject target = kvp.Value.getObject();
+                    StartCoroutine(lookForTime(target, 25));
+                }
             } catch (KeyNotFoundException e) {
                 kvp.Value.setSize(0);
             }
@@ -78,5 +87,13 @@ public class PlanetManager : MonoBehaviour
         } else {
             return new Color(0.94f, 0.73f, 0.00f, 1.0f);
         }
+    }
+
+    IEnumerator lookForTime(GameObject target, float waitTime)
+    {
+        camController.target = target;
+        yield return new WaitForSeconds(waitTime);
+        camController.target = null;
+        yield break;
     }
 }

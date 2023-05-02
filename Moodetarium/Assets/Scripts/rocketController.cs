@@ -11,7 +11,7 @@ public class rocketController : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Sun");
-        transform.Rotate(new Vector3(0, 90, 0));
+        transform.Rotate(new Vector3(0, -90, 0));
     }
 
     void Update()

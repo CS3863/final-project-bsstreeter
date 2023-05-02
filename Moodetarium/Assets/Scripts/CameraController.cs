@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     private Vector3 lookOffset;
     public float cameraLookAbove;
 
-    public bool lookAtRocket = true;
     public GameObject target;
 
     void Start()
@@ -27,16 +26,15 @@ public class CameraController : MonoBehaviour
         Vector3 newCamPosition = rocket.transform.position + (rocket.transform.forward * posOffset.z) + (rocket.transform.up * posOffset.y);
         transform.position = newCamPosition;
 
-        if (lookAtRocket)
+        if (target != null)
         {
-            //Rotate
-            Quaternion newCamRotation = Quaternion.LookRotation(rocket.transform.position + lookOffset - transform.position);
+            Quaternion newCamRotation = Quaternion.LookRotation(target.transform.position - transform.position);
             newCamRotation = Quaternion.Slerp(transform.rotation, newCamRotation, camRotationSpeed * Time.smoothDeltaTime); //spherical lerp smoothing
             transform.rotation = newCamRotation;
         }
-        else {
-            //Rotate
-            Quaternion newCamRotation = Quaternion.LookRotation(target.transform.position - transform.position);
+        else
+        {
+            Quaternion newCamRotation = Quaternion.LookRotation(rocket.transform.position + lookOffset - transform.position);
             newCamRotation = Quaternion.Slerp(transform.rotation, newCamRotation, camRotationSpeed * Time.smoothDeltaTime); //spherical lerp smoothing
             transform.rotation = newCamRotation;
         }
