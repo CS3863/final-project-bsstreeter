@@ -5,19 +5,33 @@ using UnityEngine;
 public class followRocket : MonoBehaviour
 {
     public GameObject rocket;
+//    public float camMotionSpeed = 50f;
+    public float camRotationSpeed = 50f;
     private Vector3 offset;
-    
+    public float cameraLookAbove;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // get the offset of the camera at the start so that it isn't hardcoded
         offset = transform.position - rocket.transform.position;
+        transform.position = rocket.transform.position + (transform.forward * offset.z) + (rocket.transform.up * offset.y);
+        transform.LookAt(rocket.transform.position + new Vector3(0, cameraLookAbove, 0));
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void UpdateCameraPosition()
     {
-        transform.position = rocket.transform.position + offset; 
+        //Move
+        Vector3 newCamPosition = rocket.transform.position + (rocket.transform.forward * offset.z) + (rocket.transform.up * offset.y);
+        transform.position = newCamPosition;
+
+        //Rotate
+        Quaternion newCamRotation = Quaternion.LookRotation(rocket.transform.position - transform.position);
+        newCamRotation = Quaternion.Slerp(transform.rotation, newCamRotation, camRotationSpeed * Time.smoothDeltaTime); //spherical lerp smoothing
+        transform.rotation = newCamRotation;
+
+    }
+
+    private void Update()
+    {
+        UpdateCameraPosition();
     }
 }
