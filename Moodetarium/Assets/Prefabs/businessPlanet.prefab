@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5910763725212740625}
   - component: {fileID: 8418338015833158765}
   - component: {fileID: 5767974414466771295}
+  - component: {fileID: 8370979961793014291}
   m_Layer: 0
   m_Name: businessPlanet
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9cdeabe95970b4d996d5e4f2d15f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   degreesPerSecond: 5
 --- !u!114 &8418338015833158765
 MonoBehaviour:
@@ -125,3 +127,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2490939345f0ccd4ebbd14339723c03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &8370979961793014291
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736226409629851863}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.497, y: 0.605, z: 0.536}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.105000004, z: -0.004}
+  m_TimeToStationary: 0.5
