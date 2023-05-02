@@ -12,7 +12,7 @@ public class PlanetManager : MonoBehaviour
     private Dictionary<string, PlanetAppearanceController> planetControllers = new Dictionary<string, PlanetAppearanceController>();
 
     public void createPlanets(List<string> names) {
-        float i = 3.0f;
+        float i = 4.0f;
         foreach (string name in names)
         {
             // create a child element of the gameobject the script is attached to and get the needed references
@@ -22,7 +22,7 @@ public class PlanetManager : MonoBehaviour
             // move the planet to a random point in the orbit around the sun at its set distance
             float angle = UnityEngine.Random.Range(0f,360f) * Mathf.Deg2Rad;
             newPlanet.transform.position = new Vector3( Mathf.Cos(angle) * i , 0, Mathf.Sin(angle) * i );
-            i++;
+            i += 2;
             
             // add new planet to the dictionary to modify its look later
             PlanetAppearanceController newObjController = newPlanet.GetComponent<PlanetAppearanceController>();
