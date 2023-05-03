@@ -140,5 +140,12 @@ public class CsvDataRequester : AbstractDataRequester
     {
         credit.startCredits();
         camController.target = null;
+        StartCoroutine(selfDestruct());
+    }
+
+    IEnumerator selfDestruct() {
+        yield return new WaitForSeconds(50.5f);
+        Debug.Log("quitting");
+        Application.Quit();
     }
 }
