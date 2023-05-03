@@ -15,7 +15,7 @@ public class PlanetManager : MonoBehaviour
 
     public void createPlanets(List<string> names) {
         float dist = 3.0f;
-        List<float> angles = new List<float>() { 180, 90, 0, 270, 30 };
+        List<float> angles = new List<float>() { 0, 270, 90, 180 };
 
         Debug.Log(names.Count + " names");
         for (int i = 0;i < names.Count; i++) {
