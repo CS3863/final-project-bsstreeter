@@ -14,20 +14,22 @@ public class PlanetManager : MonoBehaviour
     public CameraController camController;
 
     public void createPlanets(List<string> names) {
-        float i = 3.0f;
-        foreach (string name in names)
-        {
+        float dist = 3.0f;
+        List<float> angles = new List<float>() { 180, 90, 0, 270, 30 };
+
+        Debug.Log(names.Count + " names");
+        for (int i = 0;i < names.Count; i++) {
             // create a child element of the gameobject the script is attached to and get the needed references
-            GameObject newPlanet = Instantiate(planetPrefabs[Array.IndexOf(planetNames, name)]) as GameObject;
+            GameObject newPlanet = Instantiate(planetPrefabs[Array.IndexOf(planetNames, names[i])]) as GameObject;
             newPlanet.transform.parent = gameObject.transform;
 
             // move the planet to a random point in the orbit around the sun at its set distance
-            float angle = UnityEngine.Random.Range(0f,360f) * Mathf.Deg2Rad;
-            newPlanet.transform.position = new Vector3( Mathf.Cos(angle) * i , 0, Mathf.Sin(angle) * i );
+            float angle = angles[i] * Mathf.Deg2Rad;
+            newPlanet.transform.position = new Vector3( Mathf.Cos(angle) * dist , 0, Mathf.Sin(angle) * dist );
             
             // add new planet to the dictionary to modify its look later
             PlanetAppearanceController newObjController = newPlanet.GetComponent<PlanetAppearanceController>();
-            planetControllers.Add(name, newObjController);
+            planetControllers.Add(names[i], newObjController);
         }
         Debug.Log("Created planets: " + string.Join(",", names));
     }
@@ -61,7 +63,8 @@ public class PlanetManager : MonoBehaviour
                 if (prevScale == 0 && scaleValue > 0)
                 {
                     GameObject target = kvp.Value.getObject();
-                    StartCoroutine(lookForTime(target, 25));
+                    camController.target = target;
+                    // StartCoroutine(lookForTime(target, 25));
                 }
             } catch (KeyNotFoundException e) {
                 kvp.Value.setSize(0);
@@ -88,11 +91,11 @@ public class PlanetManager : MonoBehaviour
         }
     }
 
-    IEnumerator lookForTime(GameObject target, float waitTime)
+    /*IEnumerator lookForTime(GameObject target, float waitTime)
     {
         camController.target = target;
         yield return new WaitForSeconds(waitTime);
         camController.target = null;
         yield break;
-    }
+    }*/
 }

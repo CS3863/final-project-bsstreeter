@@ -360,6 +360,7 @@ MonoBehaviour:
   - {fileID: 7366266259718901402, guid: 5cd182110e60ff443b31f3e67727d85b, type: 3}
   - {fileID: 7984938832680237241, guid: 9312b86340f12cd4da25a84c4e4cdbde, type: 3}
   - {fileID: 9197756726024060967, guid: ff28d5a0e9c1c4242b4040975274738f, type: 3}
+  angles: []
   camController: {fileID: 525483900}
 --- !u!114 &424532648
 MonoBehaviour:
@@ -1307,7 +1308,7 @@ PrefabInstance:
     - target: {fileID: 1762527787367269228, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
       propertyPath: degreesPerSecond
-      value: 9
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 2574309422530961848, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
