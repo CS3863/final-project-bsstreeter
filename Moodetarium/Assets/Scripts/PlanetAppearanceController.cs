@@ -10,7 +10,7 @@ public class PlanetAppearanceController : MonoBehaviour
     private float changeSpeed = 1.5f;
 
     void Start() {
-        planetRenderer = GetComponent<Renderer>();
+        planetRenderer = transform.GetChild(0).GetComponent<Renderer>();
     }
 
     public void setColor(Color color) {
@@ -20,9 +20,9 @@ public class PlanetAppearanceController : MonoBehaviour
 
     private IEnumerator changeColorGradual(Color endColor)
     {
-        Color startColor = planetRenderer.material.color;
+        Color startColor = planetRenderer.material.GetColor("_BaseColor");
         float tick = 0f;
-        while (planetRenderer.material.color != endColor)
+        while (planetRenderer.material.GetColor("_BaseColor") != endColor)
         {
             tick += Time.deltaTime * changeSpeed;
             planetRenderer.material.SetColor("_BaseColor", Color.Lerp(startColor, endColor, tick) );

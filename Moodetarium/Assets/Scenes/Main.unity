@@ -353,15 +353,14 @@ MonoBehaviour:
   planetNames:
   - Engineering and Natural Sciences
   - Arts and Sciences
-  - Law
   - Business
   - Health Sciences
   planetPrefabs:
-  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
-  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
-  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
-  - {fileID: 3736226409629851863, guid: a774377f9007c1f40b3dac3482e40acd, type: 3}
-  - {fileID: 5313518121321779553, guid: 0a2b842719bf5064bb9a6b199102202b, type: 3}
+  - {fileID: 7285018130015871148, guid: 6e9675056be7d144e92b5515a3ca9313, type: 3}
+  - {fileID: 7366266259718901402, guid: 5cd182110e60ff443b31f3e67727d85b, type: 3}
+  - {fileID: 7984938832680237241, guid: 9312b86340f12cd4da25a84c4e4cdbde, type: 3}
+  - {fileID: 9197756726024060967, guid: ff28d5a0e9c1c4242b4040975274738f, type: 3}
+  camController: {fileID: 525483900}
 --- !u!114 &424532648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,6 +575,7 @@ MonoBehaviour:
   rocket: {fileID: 919132149125547552}
   camRotationSpeed: 5
   cameraLookAbove: 0.06
+  target: {fileID: 0}
 --- !u!114 &525483901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,7 +1006,7 @@ Transform:
   m_GameObject: {fileID: 1683989877}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 424532646}
@@ -1307,7 +1307,7 @@ PrefabInstance:
     - target: {fileID: 1762527787367269228, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
       propertyPath: degreesPerSecond
-      value: -5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2574309422530961848, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}

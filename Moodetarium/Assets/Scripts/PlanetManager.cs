@@ -24,7 +24,6 @@ public class PlanetManager : MonoBehaviour
             // move the planet to a random point in the orbit around the sun at its set distance
             float angle = UnityEngine.Random.Range(0f,360f) * Mathf.Deg2Rad;
             newPlanet.transform.position = new Vector3( Mathf.Cos(angle) * i , 0, Mathf.Sin(angle) * i );
-            i++;
             
             // add new planet to the dictionary to modify its look later
             PlanetAppearanceController newObjController = newPlanet.GetComponent<PlanetAppearanceController>();
