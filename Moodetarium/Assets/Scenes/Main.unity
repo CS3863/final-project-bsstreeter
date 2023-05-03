@@ -377,6 +377,7 @@ MonoBehaviour:
   maxTimeBetweenChanges: 30
   minTimeBetweenChanges: 2
   credit: {fileID: 252864334}
+  camController: {fileID: 525483900}
 --- !u!1 &525483892
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,13 +457,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525483892}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 1.2, z: -5.392}
-  m_LocalScale: {x: 0.05000002, y: 0.050000004, z: 0.050000023}
+  m_LocalRotation: {x: 0.08715578, y: -0, z: -0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 1.49, z: -5.602}
+  m_LocalScale: {x: 0.05000002, y: 0.05000001, z: 0.05000003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!82 &525483898
 AudioSource:
@@ -810,7 +811,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1790709971}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -839,8 +840,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d64cb2d29ce5c41b3ffdc650b8be0c, type: 2}
+  m_sharedMaterial: {fileID: 2002414828742266594, guid: 54d64cb2d29ce5c41b3ffdc650b8be0c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1006,7 +1008,7 @@ Transform:
   m_GameObject: {fileID: 1683989877}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 424532646}
@@ -1085,14 +1087,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Director:       \nZoe Delap\n\nArt Director:\nEmma Reinecke\n\nMovement
-    Controller:\nBen Streeter \n\n3D Modeler(Rocket): \nAlexander Homeyer\n\nAudio
-    By:\nBen Streeter \n\nCredits By:\nDrew Dreiling\n\nMusic By: Emmit Fenn- Wander
-    (Youtube Audio Files)\n\n  BYTES, BYTES. \u201CSpaceskies Free: 2d Sky.\u201D
-    Unity Asset Store, Standard Unity Asset Store EULA, 6 Feb. 2017, https://assetstore.unity.com/packages/2d/textures-materials/sky/spaceskies-free-80503.
+    Controller:\nBen Streeter \n\n3D Modeling: \nAlexander Homeyer and Emma Reinecke\n\nTexturing:\nAlexander
+    Homeyer\n\nScripting:\nZoe Delap\n\nAudio:\nBen Streeter \n\nCredits By:\nDrew
+    Dreiling\n\n\nOutside Assets:\n\nMusic By: Emmit Fenn- Wander (Youtube Audio
+    Files)\n\nFont: \nIgnatov, D. Clickuper Font. https://fontlibrary.org/en/font/clickuper\n\nSkybox:\n 
+    BYTES, BYTES. \u201CSpaceskies Free: 2d Sky.\u201D Unity Asset Store, Standard
+    Unity Asset Store EULA, 6 Feb. 2017, https://assetstore.unity.com/packages/2d/textures-materials/sky/spaceskies-free-80503.
     \n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54d64cb2d29ce5c41b3ffdc650b8be0c, type: 2}
+  m_sharedMaterial: {fileID: 2002414828742266594, guid: 54d64cb2d29ce5c41b3ffdc650b8be0c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1317,7 +1322,7 @@ PrefabInstance:
     - target: {fileID: 2950447555153394434, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2950447555153394434, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
@@ -1342,12 +1347,12 @@ PrefabInstance:
     - target: {fileID: 2950447555153394434, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.29
       objectReference: {fileID: 0}
     - target: {fileID: 2950447555153394434, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -5.21
       objectReference: {fileID: 0}
     - target: {fileID: 2950447555153394434, guid: 651f8590cc7191344829a26f59ee7f33,
         type: 3}

@@ -23,6 +23,7 @@ public class CsvDataRequester : AbstractDataRequester
     public float minTimeBetweenChanges = 1.0f;
 
     public CreditsController credit;
+    public CameraController camController;
 
     private void Awake()
     {
@@ -138,5 +139,6 @@ public class CsvDataRequester : AbstractDataRequester
     public override void FinishedCollectingData()
     {
         credit.startCredits();
+        camController.target = null;
     }
 }

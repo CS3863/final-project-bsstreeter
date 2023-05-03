@@ -14,7 +14,7 @@ public class PlanetManager : MonoBehaviour
     public CameraController camController;
 
     public void createPlanets(List<string> names) {
-        float dist = 3.0f;
+        float dist = 5.0f;
         List<float> angles = new List<float>() { 0, 270, 90, 180 };
 
         Debug.Log(names.Count + " names");
@@ -90,12 +90,4 @@ public class PlanetManager : MonoBehaviour
             return new Color(0.94f, 0.73f, 0.00f, 1.0f);
         }
     }
-
-    /*IEnumerator lookForTime(GameObject target, float waitTime)
-    {
-        camController.target = target;
-        yield return new WaitForSeconds(waitTime);
-        camController.target = null;
-        yield break;
-    }*/
 }
